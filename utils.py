@@ -6,7 +6,7 @@ from pygame import Vector2
 def simplify_angle(angle: float) -> float: return angle % (2*pi)
 
 
-# calcula la ruta angular mas corto entre dos ángulos
+# calcula la ruta angular más corta entre dos ángulos
 def calc_angle_diff(angle: float, anchor: float) -> float: return pi - \
     simplify_angle(angle+pi-anchor)
 
@@ -21,8 +21,8 @@ def constraint_angle(angle: float, anchor: float, constraint: float) -> float:
     return simplify_angle(anchor + constraint)
 
 
-# los dos puntos siempre estarán en la misma distancia
-def constraint_distance(pos: Vector2, anchor: Vector2, constraint: float):
+# el punto pos tendrá siempre el mismo radio sobre su anchor
+def constraint_distance(pos: Vector2, anchor: Vector2, constraint: float) -> Vector2:
     displacement = pos - anchor
     if displacement.length() == 0:
         return anchor.copy()

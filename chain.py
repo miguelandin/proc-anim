@@ -26,8 +26,7 @@ class Chain:
         self.joints[0] = pos
 
         for i in range(1, len(self.joints)):
-            current_displacement = (self.joints[i-1]-self.joints[i])
-            current_angle = current_displacement.angle_rad
+            current_angle = (self.joints[i-1]-self.joints[i]).angle_rad
             self.angles[i] = constraint_angle(
                 current_angle, self.angles[i-1], self.max_angle)
 
