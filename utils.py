@@ -24,8 +24,8 @@ def constraint_angle(angle: float, anchor: float, constraint: float) -> float:
 # el punto pos tendrá siempre el mismo radio sobre su anchor
 def constraint_distance(pos: Vector2, anchor: Vector2, constraint: float) -> Vector2:
     displacement = pos - anchor
-    if displacement.length() == 0:
-        return anchor.copy()
+    if displacement.length() < 0.001:
+        return anchor + Vector2(constraint, 0)
 
     displacement.scale_to_length(constraint)
     return anchor + displacement
